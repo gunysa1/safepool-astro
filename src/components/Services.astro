@@ -1,0 +1,45 @@
+---
+interface Props {
+  t: {
+    heading: string;
+    subheading: string;
+    s1title: string; s1desc: string;
+    s2title: string; s2desc: string;
+    s3title: string; s3desc: string;
+  };
+}
+const { t } = Astro.props;
+const services = [
+  {
+    title: t.s1title, desc: t.s1desc, color: 'bg-blue-100 text-brand-blue',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>`,
+  },
+  {
+    title: t.s2title, desc: t.s2desc, color: 'bg-red-100 text-brand-red',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>`,
+  },
+  {
+    title: t.s3title, desc: t.s3desc, color: 'bg-green-100 text-green-600',
+    icon: `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>`,
+  },
+];
+---
+<section id="services" class="py-24 bg-brand-light-blue">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <h2 class="text-4xl font-black text-navy mb-4">{t.heading}</h2>
+      <p class="text-slate-600 text-lg">{t.subheading}</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      {services.map(s => (
+        <div class="bg-white p-10 rounded-3xl border border-blue-50 shadow-sm hover:-translate-y-2 hover:shadow-xl transition-all duration-300">
+          <div class={`w-14 h-14 ${s.color} rounded-2xl flex items-center justify-center mb-6`}>
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={s.icon} />
+          </div>
+          <h3 class="text-xl font-extrabold mb-3 text-navy">{s.title}</h3>
+          <p class="text-slate-600 leading-relaxed">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
