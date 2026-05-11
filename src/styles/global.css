@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@theme {
+  --color-navy: #0a1f44;
+  --color-brand-red: #e8212e;
+  --color-brand-blue: #3b82f6;
+  --color-brand-light-blue: #f0f7ff;
+  --font-family-assistant: 'Assistant', sans-serif;
+  --font-family-inter: 'Inter', sans-serif;
+}
