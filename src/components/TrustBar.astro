@@ -1,0 +1,29 @@
+---
+interface Props {
+  t: {
+    stat1val: string; stat1label: string;
+    stat2val: string; stat2label: string;
+    stat3val: string; stat3label: string;
+    stat4val: string; stat4label: string;
+  };
+}
+const { t } = Astro.props;
+const stats = [
+  { val: t.stat1val, label: t.stat1label },
+  { val: t.stat2val, label: t.stat2label },
+  { val: t.stat3val, label: t.stat3label },
+  { val: t.stat4val, label: t.stat4label },
+];
+---
+<section class="py-12 bg-white border-b border-gray-100">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {stats.map(s => (
+        <div class="space-y-1">
+          <div class="text-3xl font-black text-brand-red">{s.val}</div>
+          <div class="text-slate-500 font-semibold text-sm">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
