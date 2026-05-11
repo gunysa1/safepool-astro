@@ -1,17 +1,84 @@
 ---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import TrustBar from '../components/TrustBar.astro';
+import Services from '../components/Services.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import WhatsappButton from '../components/WhatsappButton.astro';
 
+const PHONE = '972526993935';
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Base lang="he" title="SafePool - שירותי הצלה לבריכות פרטיות" description="מצילים מוסמכים לבריכות פרטיות, וילות ואירועים משפחתיים.">
+  <Navbar lang="he" t={{ services: 'שירותי השגחה', pricing: 'מחירון', about: 'עלינו', bookNow: 'הזמינו מציל' }} />
+  <Hero t={{
+    badge: 'ביטחון מלא במים',
+    headline: 'השקט שלכם, הבטיחות שלהם.',
+    subheadline: 'מצילים מוסמכים לבריכות פרטיות, וילות ואירועים משפחתיים. אנחנו כאן כדי שאתם תוכלו לארח בראש שקט.',
+    cta1: 'הזמינו מציל עכשיו',
+    cta2: 'השירותים שלנו',
+    trust1: 'מוסמכים',
+    trust2: 'מבוטחים',
+    trust3: 'מענה מהיר',
+  }} />
+  <TrustBar t={{
+    stat1val: '100%', stat1label: 'השגחה צמודה',
+    stat2val: '24/7', stat2label: 'מענה מהיר',
+    stat3val: 'ביטוח', stat3label: 'צד ג׳ מלא',
+    stat4val: 'מוסמכים', stat4label: 'משרד הפנים',
+  }} />
+  <Services t={{
+    heading: 'מומחים לבטיחות בבריכה',
+    subheading: 'אנחנו מתמחים במתן פתרונות השגחה מקצועיים לסביבה הביתית והפרטית.',
+    s1title: 'השגחת בריכה צמודה',
+    s1desc: 'מציל מקצועי שנמצא אך ורק בשביל הבריכה שלכם. ערנות מקסימלית, ללא הסחות דעת, לאורך כל שעות הפעילות.',
+    s2title: 'הדרכת בטיחות במים',
+    s2desc: 'לפני שהילדים קופצים, אנחנו מעבירים הדרכה קצרה וחיונית על חוקי הבריכה, התנהגות נכונה ומניעת סכנות.',
+    s3title: 'מענה רפואי ראשוני',
+    s3desc: 'המצילים שלנו מצוידים בתיק עזרה ראשונה תקני ודפיברילטור. מוכנים לכל תרחיש, החל מחבישה קלה ועד החייאה.',
+  }} />
+  <Pricing t={{
+    heading: 'תכננו את האירוע שלכם',
+    body: 'מחיר שירותי ההשגחה נקבע לפי מספר השעות וכמות הילדים. השתמשו במחשבון לקבלת הערכה ראשונית.',
+    bullet1: 'מינימום שעתיים להזמנה',
+    bullet2: 'ביטוח מקצועי כלול במחיר',
+    hoursLabel: 'זמן השגחה',
+    hoursUnit: 'שעות',
+    peopleLabel: 'כמות מתרחצים',
+    tier1: 'עד 15 ילדים (מציל 1)',
+    tier2: '15-30 ילדים (עירנות מוגברת)',
+    tier3: 'מעל 30 ילדים (2 מצילים)',
+    estimateLabel: 'הערכת עלות',
+    note: 'המחיר הסופי מאושר בשיחה / וואטסאפ',
+    cta: 'להזמנה ותיאום',
+  }} />
+  <FAQ t={{
+    heading: 'שאלות נפוצות של הורים',
+    items: [
+      { q: 'מאיזה גיל צריך מציל בבריכה פרטית?', a: 'בכל מצב שבו יש ילדים בבריכה ללא השגחה של מבוגר מיומן שזהו תפקידו הבלעדי, מומלץ להזמין מציל.' },
+      { q: 'מה המציל מביא איתו?', a: 'המציל מגיע עם מדי זיהוי, משרוקית, ציוד עזרה ראשונה ודפיברילטור. ציוד נוסף ניתן לתאם מראש.' },
+      { q: 'כמה זמן מראש צריך להזמין?', a: 'מומלץ להזמין לפחות 48 שעות מראש, אך אנו מנסים להתאים גם לבקשות דחופות.' },
+    ],
+  }} />
+  <Contact phone={PHONE} t={{
+    heading: 'בואו נבטיח את הבריכה שלכם',
+    subheading: 'השאירו פרטים או שלחו וואטסאפ לתיאום מציל לאירוע הקרוב.',
+    phoneLabel: 'טלפון',
+    name: 'שם מלא',
+    phonePlaceholder: 'טלפון',
+    location: 'יישוב (איפה הבריכה?)',
+    details: 'פרטים נוספים (תאריך, שעות, גילאי הילדים)',
+    submit: 'שלח בקשה בוואטסאפ',
+    successMsg: 'מעבירים אותך לוואטסאפ לשליחת ההודעה...',
+    hoursLabel: 'הערכת שעות',
+    priceLabel: 'הערכת מחיר',
+  }} />
+  <Footer t={{
+    tagline: 'השגחה צמודה, בטיחות מקסימלית ושקט נפשי למשפחות בבריכות פרטיות ובאירועים.',
+    copyright: '© 2026 SafePool - שירותי הצלה מוסמכים. כל הזכויות שמורות.',
+  }} />
+  <WhatsappButton phone={PHONE} />
+</Base>
