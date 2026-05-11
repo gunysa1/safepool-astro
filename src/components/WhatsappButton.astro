@@ -1,11 +1,16 @@
 ---
 interface Props {
   phone: string;
+  lang: 'he' | 'en';
 }
-const { phone } = Astro.props;
+const { phone, lang } = Astro.props;
+const message = lang === 'he'
+  ? 'היי! הגעתי מאתר SafePool ואשמח לשמוע פרטים על שירותי ההצלה 🏊'
+  : 'Hi! I found you on the SafePool website and would love to hear more about your lifeguard services 🏊';
+const href = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 ---
 <a
-  href={`https://wa.me/${phone}`}
+  href={href}
   target="_blank"
   rel="noopener noreferrer"
   class="fixed bottom-8 left-8 z-50 bg-green-500 text-white p-4 rounded-full shadow-2xl hover:bg-green-600 transition-all hover:scale-110"
