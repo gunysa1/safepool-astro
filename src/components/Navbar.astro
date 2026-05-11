@@ -1,0 +1,66 @@
+---
+interface Props {
+  lang: 'he' | 'en';
+  t: {
+    services: string;
+    pricing: string;
+    about: string;
+    bookNow: string;
+  };
+}
+const { lang, t } = Astro.props;
+const otherLang = lang === 'he' ? '/en' : '/';
+const otherLangLabel = lang === 'he' ? 'EN' : 'HE';
+---
+<header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-gray-100 shadow-sm">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href={lang === 'he' ? '/' : '/en'} class="flex items-center gap-2">
+      <div class="bg-brand-blue p-1.5 rounded-lg">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+        </svg>
+      </div>
+      <span class="text-2xl font-black text-navy tracking-tight">SafePool</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6 font-semibold text-slate-600">
+      <a href="#services" class="hover:text-brand-blue transition">{t.services}</a>
+      <a href="#calculator" class="hover:text-brand-blue transition">{t.pricing}</a>
+      <a href="#about" class="hover:text-brand-blue transition">{t.about}</a>
+      <a href={otherLang} class="border border-gray-300 text-slate-500 px-3 py-1 rounded-full text-sm hover:border-brand-blue hover:text-brand-blue transition">{otherLangLabel}</a>
+      <a href="#contact" class="bg-brand-red text-white px-6 py-2 rounded-full hover:bg-red-700 transition shadow">{t.bookNow}</a>
+    </nav>
+    <button id="menuBtn" class="md:hidden p-2" aria-label="Toggle menu">
+      <svg id="iconOpen" class="w-7 h-7 text-navy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="iconClose" class="w-7 h-7 text-navy hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+  <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-100 px-6 pb-4">
+    <nav class="flex flex-col gap-4 pt-4 font-semibold text-slate-700">
+      <a href="#services" class="hover:text-brand-blue">{t.services}</a>
+      <a href="#calculator" class="hover:text-brand-blue">{t.pricing}</a>
+      <a href="#about" class="hover:text-brand-blue">{t.about}</a>
+      <a href={otherLang} class="hover:text-brand-blue">{otherLangLabel}</a>
+      <a href="#contact" class="bg-brand-red text-white px-6 py-3 rounded-xl text-center hover:bg-red-700 transition">{t.bookNow}</a>
+    </nav>
+  </div>
+</header>
+<script>
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('mobileMenu');
+  const iconOpen = document.getElementById('iconOpen');
+  const iconClose = document.getElementById('iconClose');
+  btn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden') === false;
+    iconOpen?.classList.toggle('hidden', open);
+    iconClose?.classList.toggle('hidden', !open);
+  });
+  menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.add('hidden');
+    iconOpen?.classList.remove('hidden');
+    iconClose?.classList.add('hidden');
+  }));
+</script>
