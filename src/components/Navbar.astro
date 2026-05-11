@@ -9,12 +9,14 @@ interface Props {
   };
 }
 const { lang, t } = Astro.props;
-const otherLang = lang === 'he' ? '/en' : '/';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const homeHref = lang === 'he' ? `${base}/` : `${base}/en/`;
+const otherLang = lang === 'he' ? `${base}/en/` : `${base}/`;
 const otherLangLabel = lang === 'he' ? 'EN' : 'HE';
 ---
 <header class="bg-white/90 sticky top-0 z-50 backdrop-blur-md border-b border-gray-100 shadow-sm">
   <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-    <a href={lang === 'he' ? '/' : '/en'} class="flex items-center gap-3 group">
+    <a href={homeHref} class="flex items-center gap-3 group">
       <!-- Logo mark: shield + wave -->
       <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="40" height="40" rx="10" fill="#0a1f44"/>
@@ -36,7 +38,7 @@ const otherLangLabel = lang === 'he' ? 'EN' : 'HE';
       <a href="#services" class="hover:text-brand-blue transition">{t.services}</a>
       <a href="#calculator" class="hover:text-brand-blue transition">{t.pricing}</a>
       <a href="#about" class="hover:text-brand-blue transition">{t.about}</a>
-      <a href={otherLang} class="border border-gray-300 text-slate-500 px-3 py-1 rounded-full text-sm hover:border-brand-blue hover:text-brand-blue transition">{otherLangLabel}</a>
+      <a href={otherLang} class="border border-gray-300 text-slate-500 px-3 py-1 rounded-full text-sm hover:border-brand-blue hover:text-brand-blue transition" hreflang={otherLangLabel.toLowerCase()}>{otherLangLabel}</a>
       <a href="#contact" class="bg-brand-red text-white px-6 py-2 rounded-full hover:bg-red-700 transition shadow">{t.bookNow}</a>
     </nav>
     <button id="menuBtn" class="md:hidden p-2" aria-label="Toggle menu">
@@ -53,7 +55,7 @@ const otherLangLabel = lang === 'he' ? 'EN' : 'HE';
       <a href="#services" class="hover:text-brand-blue">{t.services}</a>
       <a href="#calculator" class="hover:text-brand-blue">{t.pricing}</a>
       <a href="#about" class="hover:text-brand-blue">{t.about}</a>
-      <a href={otherLang} class="hover:text-brand-blue">{otherLangLabel}</a>
+      <a href={otherLang} class="hover:text-brand-blue" hreflang={otherLangLabel.toLowerCase()}>{otherLangLabel}</a>
       <a href="#contact" class="bg-brand-red text-white px-6 py-3 rounded-xl text-center hover:bg-red-700 transition">{t.bookNow}</a>
     </nav>
   </div>
