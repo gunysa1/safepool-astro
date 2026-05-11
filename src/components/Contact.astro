@@ -1,0 +1,57 @@
+---
+interface Props {
+  phone: string;
+  t: {
+    heading: string;
+    subheading: string;
+    phoneLabel: string;
+    name: string;
+    phonePlaceholder: string;
+    location: string;
+    details: string;
+    submit: string;
+    successMsg: string;
+    hoursLabel: string;
+    priceLabel: string;
+  };
+}
+const { phone, t } = Astro.props;
+---
+<section id="contact" class="py-24 bg-brand-light-blue border-t border-blue-100">
+  <div class="max-w-2xl mx-auto px-6 text-center">
+    <h2 class="text-4xl font-black text-navy mb-4">{t.heading}</h2>
+    <p class="text-slate-600 mb-4">{t.subheading}</p>
+    <p class="text-lg font-bold text-brand-blue mb-10">
+      {t.phoneLabel}:
+      <a href={`tel:+${phone}`} class="underline underline-offset-4 hover:text-navy transition">+{phone}</a>
+    </p>
+    <form id="contactForm" class="space-y-4 text-start">
+      <div class="grid md:grid-cols-2 gap-4">
+        <input type="text" id="contactName" placeholder={t.name} required class="w-full p-4 rounded-xl bg-white border border-slate-200 outline-none focus:border-brand-blue transition" />
+        <input type="tel" id="contactPhone" placeholder={t.phonePlaceholder} required class="w-full p-4 rounded-xl bg-white border border-slate-200 outline-none focus:border-brand-blue transition" />
+      </div>
+      <input type="text" id="contactLocation" placeholder={t.location} required class="w-full p-4 rounded-xl bg-white border border-slate-200 outline-none focus:border-brand-blue transition" />
+      <textarea id="contactDetails" placeholder={t.details} rows={3} class="w-full p-4 rounded-xl bg-white border border-slate-200 outline-none focus:border-brand-blue transition"></textarea>
+      <button type="submit" class="w-full bg-brand-red text-white py-5 rounded-xl text-xl font-bold shadow-xl hover:bg-red-700 transition">{t.submit}</button>
+    </form>
+    <div id="msgSuccess" class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-xl font-bold">
+      {t.successMsg}
+    </div>
+  </div>
+</section>
+<script define:vars={{ phone, t }}>
+  document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('contactName').value;
+    const userPhone = document.getElementById('contactPhone').value;
+    const location = document.getElementById('contactLocation').value;
+    const details = document.getElementById('contactDetails').value;
+    const estHours = document.getElementById('hours')?.value ?? '';
+    const estPrice = document.getElementById('totalPrice')?.textContent ?? '';
+    const msg = `${t.hoursLabel}: ${estHours}\n${t.priceLabel}: ${estPrice}\n\n${name} | ${userPhone} | ${location}\n${details}`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+    this.style.opacity = '0.3';
+    this.style.pointerEvents = 'none';
+    document.getElementById('msgSuccess')?.classList.remove('hidden');
+  });
+</script>
