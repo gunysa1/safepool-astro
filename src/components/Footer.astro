@@ -9,7 +9,19 @@ const { t } = Astro.props;
 ---
 <footer class="bg-navy text-blue-200 py-16 text-center">
   <div class="max-w-6xl mx-auto px-6">
-    <span class="text-2xl font-black text-white block mb-3 tracking-tight">SafePool</span>
+    <div class="flex items-center justify-center gap-3 mb-3">
+      <svg width="36" height="36" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="40" height="40" rx="10" fill="#1e3a6e"/>
+        <path d="M20 6 L30 10 L30 20 C30 25.5 25.5 30 20 32 C14.5 30 10 25.5 10 20 L10 10 Z" fill="#3b82f6" opacity="0.9"/>
+        <path d="M12 21 Q14.5 18.5 17 21 Q19.5 23.5 22 21 Q24.5 18.5 27 21" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/>
+        <circle cx="20" cy="15" r="2.5" fill="white"/>
+        <path d="M17 20 Q18.5 18 20 19 Q21.5 18 23 20" stroke="white" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="flex flex-col leading-none text-start">
+        <span class="text-xl font-black text-white tracking-tight">SafePool</span>
+        <span class="text-[10px] font-semibold text-brand-blue tracking-widest uppercase opacity-80">lifeguard services</span>
+      </div>
+    </div>
     <p class="max-w-md mx-auto mb-8 opacity-70 text-sm leading-relaxed">{t.tagline}</p>
     <div class="flex justify-center gap-6 mb-8">
       <a href="#" aria-label="Facebook" class="opacity-50 hover:opacity-100 transition">
