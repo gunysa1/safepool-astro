@@ -1,0 +1,84 @@
+---
+import Base from '../../layouts/Base.astro';
+import Navbar from '../../components/Navbar.astro';
+import Hero from '../../components/Hero.astro';
+import TrustBar from '../../components/TrustBar.astro';
+import Services from '../../components/Services.astro';
+import Pricing from '../../components/Pricing.astro';
+import FAQ from '../../components/FAQ.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsappButton from '../../components/WhatsappButton.astro';
+
+const PHONE = '972526993935';
+---
+<Base lang="en" title="SafePool - Lifeguard Services for Private Pools" description="Certified lifeguards for private pools, villas, and family events.">
+  <Navbar lang="en" t={{ services: 'Services', pricing: 'Pricing', about: 'FAQ', bookNow: 'Book Now' }} />
+  <Hero t={{
+    badge: 'Complete Water Safety',
+    headline: 'Your Peace of Mind, Their Safety.',
+    subheadline: 'Certified lifeguards for private pools, villas, and family events. So you can host and enjoy — worry-free.',
+    cta1: 'Book a Lifeguard Now',
+    cta2: 'Our Services',
+    trust1: 'Certified',
+    trust2: 'Insured',
+    trust3: 'Fast Response',
+  }} />
+  <TrustBar t={{
+    stat1val: '100%', stat1label: 'Eyes on the Water',
+    stat2val: '24/7', stat2label: 'Fast Response',
+    stat3val: 'Insured', stat3label: 'Full 3rd-party',
+    stat4val: 'Certified', stat4label: 'Ministry Licensed',
+  }} />
+  <Services t={{
+    heading: 'Pool Safety Experts',
+    subheading: 'We specialize in professional supervision for private and home pool environments.',
+    s1title: 'Dedicated Pool Supervision',
+    s1desc: 'A professional lifeguard assigned exclusively to your pool. Maximum alertness, zero distractions, for the full duration of your event.',
+    s2title: 'Water Safety Briefing',
+    s2desc: 'Before the kids jump in, we run a short and vital briefing on pool rules, safe behavior, and hazard prevention.',
+    s3title: 'First Aid Response',
+    s3desc: 'Our lifeguards carry a standard first aid kit and an AED defibrillator — ready for any scenario, from a minor scrape to CPR.',
+  }} />
+  <Pricing t={{
+    heading: 'Plan Your Event',
+    body: 'Supervision pricing is based on hours and number of swimmers. Use the calculator for an initial estimate.',
+    bullet1: 'Minimum 2-hour booking',
+    bullet2: 'Professional insurance included',
+    hoursLabel: 'Supervision Time',
+    hoursUnit: 'hours',
+    peopleLabel: 'Number of Swimmers',
+    tier1: 'Up to 15 kids (1 lifeguard)',
+    tier2: '15-30 kids (heightened alertness)',
+    tier3: '30+ kids (2 lifeguards)',
+    estimateLabel: 'Estimated Cost',
+    note: 'Final price confirmed via call / WhatsApp',
+    cta: 'Book & Coordinate',
+  }} />
+  <FAQ t={{
+    heading: 'Parents Ask Us',
+    items: [
+      { q: 'From what age do I need a lifeguard for a private pool?', a: 'Any time children are in the pool without a dedicated trained adult whose sole job is supervision — you need a lifeguard. Hosts are usually busy hosting, so the lifeguard is the only person watching the water 100% of the time.' },
+      { q: 'What does the lifeguard bring?', a: 'The lifeguard arrives with a uniform, whistle, first aid kit, and a defibrillator. Additional rescue equipment can be arranged in advance.' },
+      { q: 'How far in advance should I book?', a: 'We recommend booking at least 48 hours ahead, but we do our best to accommodate urgent requests too.' },
+    ],
+  }} />
+  <Contact phone={PHONE} t={{
+    heading: "Let's Keep Your Pool Safe",
+    subheading: 'Leave your details or send us a WhatsApp to coordinate a lifeguard for your upcoming event.',
+    phoneLabel: 'Phone',
+    name: 'Full Name',
+    phonePlaceholder: 'Phone Number',
+    location: 'City / Location (where is the pool?)',
+    details: 'Additional details (date, hours, ages of children)',
+    submit: 'Send via WhatsApp',
+    successMsg: 'Redirecting you to WhatsApp...',
+    hoursLabel: 'Estimated hours',
+    priceLabel: 'Estimated price',
+  }} />
+  <Footer t={{
+    tagline: 'Dedicated supervision, maximum safety, and peace of mind for families at private pools and events.',
+    copyright: '© 2026 SafePool — Certified Lifeguard Services. All rights reserved.',
+  }} />
+  <WhatsappButton phone={PHONE} />
+</Base>
