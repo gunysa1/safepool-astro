@@ -1,0 +1,36 @@
+---
+interface Props {
+  t: {
+    badge: string;
+    headline: string;
+    subheadline: string;
+    cta1: string;
+    cta2: string;
+    trust1: string;
+    trust2: string;
+    trust3: string;
+  };
+}
+const { t } = Astro.props;
+---
+<section
+  class="min-h-[85vh] flex items-center px-6"
+  style="background: linear-gradient(rgba(10,31,68,0.55), rgba(10,31,68,0.4)), url('https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat"
+>
+  <div class="max-w-6xl mx-auto w-full">
+    <div class="max-w-2xl bg-white/15 backdrop-blur-lg p-8 md:p-12 rounded-3xl border border-white/30 shadow-2xl">
+      <span class="text-brand-blue font-bold tracking-widest uppercase text-xs mb-4 block">{t.badge}</span>
+      <h1 class="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">{t.headline}</h1>
+      <p class="text-lg text-white/90 mb-8 font-medium leading-relaxed">{t.subheadline}</p>
+      <div class="flex flex-col sm:flex-row gap-4 mb-8">
+        <a href="#contact" class="bg-brand-red text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-red-700 transition shadow-lg text-center">{t.cta1}</a>
+        <a href="#services" class="bg-white/20 text-white px-8 py-4 rounded-xl text-lg font-bold hover:bg-white/30 transition border border-white/40 text-center">{t.cta2}</a>
+      </div>
+      <div class="flex flex-wrap gap-4">
+        <span class="bg-white/20 text-white text-sm font-semibold px-4 py-2 rounded-full border border-white/30">✓ {t.trust1}</span>
+        <span class="bg-white/20 text-white text-sm font-semibold px-4 py-2 rounded-full border border-white/30">✓ {t.trust2}</span>
+        <span class="bg-white/20 text-white text-sm font-semibold px-4 py-2 rounded-full border border-white/30">✓ {t.trust3}</span>
+      </div>
+    </div>
+  </div>
+</section>
