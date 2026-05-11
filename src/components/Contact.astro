@@ -20,11 +20,7 @@ const { phone, t } = Astro.props;
 <section id="contact" class="py-24 bg-brand-light-blue border-t border-blue-100">
   <div class="max-w-2xl mx-auto px-6 text-center">
     <h2 class="text-4xl font-black text-navy mb-4">{t.heading}</h2>
-    <p class="text-slate-600 mb-4">{t.subheading}</p>
-    <p class="text-lg font-bold text-brand-blue mb-10">
-      {t.phoneLabel}:
-      <a href={`tel:+${phone}`} class="underline underline-offset-4 hover:text-navy transition">+{phone}</a>
-    </p>
+    <p class="text-slate-600 mb-10">{t.subheading}</p>
     <form id="contactForm" class="space-y-4 text-start">
       <div class="grid md:grid-cols-2 gap-4">
         <input type="text" id="contactName" placeholder={t.name} required class="w-full p-4 rounded-xl bg-white border border-slate-200 outline-none focus:border-brand-blue transition" />
