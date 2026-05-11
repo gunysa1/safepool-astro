@@ -1,0 +1,82 @@
+---
+interface Props {
+  t: {
+    heading: string;
+    body: string;
+    bullet1: string;
+    bullet2: string;
+    hoursLabel: string;
+    hoursUnit: string;
+    peopleLabel: string;
+    tier1: string;
+    tier2: string;
+    tier3: string;
+    estimateLabel: string;
+    note: string;
+    cta: string;
+  };
+}
+const { t } = Astro.props;
+---
+<section id="calculator" class="py-24 bg-navy text-white">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-4xl font-black mb-6">{t.heading}</h2>
+        <p class="text-blue-200 text-lg mb-8 leading-relaxed">{t.body}</p>
+        <ul class="space-y-3">
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+            <span>{t.bullet1}</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg class="w-5 h-5 text-green-400 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"/></svg>
+            <span>{t.bullet2}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="bg-white text-slate-900 p-8 rounded-3xl shadow-2xl">
+        <div class="space-y-6">
+          <div>
+            <label class="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">{t.hoursLabel}</label>
+            <input type="range" id="hours" min="2" max="12" value="4" class="w-full h-2 bg-blue-100 rounded-lg appearance-none cursor-pointer" />
+            <div class="mt-2 font-bold text-brand-blue" id="hoursVal">4 {t.hoursUnit}</div>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-400 mb-2 uppercase tracking-wider">{t.peopleLabel}</label>
+            <select id="people" class="w-full border border-slate-200 p-4 rounded-xl focus:ring-2 focus:ring-brand-blue outline-none font-semibold">
+              <option value="1">{t.tier1}</option>
+              <option value="1.5">{t.tier2}</option>
+              <option value="2">{t.tier3}</option>
+            </select>
+          </div>
+          <div class="pt-6 border-t border-slate-100">
+            <div class="text-xs text-slate-400 font-bold uppercase tracking-wider mb-1">{t.estimateLabel}</div>
+            <div id="totalPrice" class="text-5xl font-black text-navy">550 ₪</div>
+            <p class="text-xs text-slate-400 mt-2">{t.note}</p>
+          </div>
+          <a href="#contact" class="block w-full bg-brand-red text-white text-center py-4 rounded-xl font-bold shadow hover:bg-red-700 transition">{t.cta}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  const hoursInput = document.getElementById('hours') as HTMLInputElement;
+  const hoursValEl = document.getElementById('hoursVal')!;
+  const peopleInput = document.getElementById('people') as HTMLSelectElement;
+  const totalPriceEl = document.getElementById('totalPrice')!;
+  const unitText = hoursValEl.textContent?.split(' ').slice(1).join(' ') ?? '';
+
+  function updatePrice() {
+    const h = parseInt(hoursInput.value);
+    const pFactor = parseFloat(peopleInput.value);
+    hoursValEl.textContent = `${h} ${unitText}`;
+    const total = (300 + h * 70) * pFactor;
+    totalPriceEl.textContent = `${Math.round(total)} ₪`;
+  }
+
+  hoursInput.addEventListener('input', updatePrice);
+  peopleInput.addEventListener('change', updatePrice);
+  updatePrice();
+</script>
